@@ -7,30 +7,32 @@ const textareaEl = document.querySelector('.feedback-form textarea');
 const localKey = 'feedback-form-state';
 let formDataEl = {};
 
-formEl.addEventListener('input', throttle(event => {
-    formDataEl[event.target.name] = event.target.value;
-    localStorage.setItem(localKey, JSON.stringify(formDataEl));
-}, 500)
-);
-
 fillFormFields();
 
+formEl.addEventListener(
+  'input',
+  throttle(event => {
+    formDataEl[event.target.name] = event.target.value;
+    localStorage.setItem(localKey, JSON.stringify(formDataEl));
+  }, 500)
+);
+
 formEl.addEventListener('submit', event => {
-event.preventDefault();
-if(inputEl.value !== '' && textareaEl.value !== '') {
+  event.preventDefault();
+  if (inputEl.value !== '' && textareaEl.value !== '') {
     console.log(formDataEl);
     localStorage.removeItem(localKey);
     event.currentTarget.reset();
     return;
-}
-alert('All fields must be filled!');
+  }
+  alert('All fields must be filled!');
 });
 
 function fillFormFields() {
-    const saveFormFields = localStorage.getItem(localKey);
-if(saveFormFields) {
+  const saveFormFields = localStorage.getItem(localKey);
+  if (saveFormFields) {
     formDataEl = JSON.parse(saveFormFields);
     inputEl.value = formDataEl.email || '';
     textareaEl.value = formDataEl.message || '';
+  }
 }
-};

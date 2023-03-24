@@ -1,14 +1,14 @@
 // Описан в документации
-import SimpleLightbox from "simplelightbox";
+import SimpleLightbox from 'simplelightbox';
 // Дополнительный импорт стилей
-import "simplelightbox/dist/simple-lightbox.min.css";
+import 'simplelightbox/dist/simple-lightbox.min.css';
 // Add imports above this line
 import { galleryItems } from './gallery-items';
 // Change code below this line
 
 console.log(galleryItems);
 
-const galleryEl = document.querySelector(".gallery");
+const galleryEl = document.querySelector('.gallery');
 
 const arrOfItems = galleryItems
   .map(
@@ -22,8 +22,8 @@ const arrOfItems = galleryItems
              />
         </a>`
   )
-  .join("");
+  .join('');
 
-galleryEl.insertAdjacentHTML("afterbegin", arrOfItems);
+galleryEl.insertAdjacentHTML('afterbegin', arrOfItems);
 
-new SimpleLightbox(".gallery a");
+new SimpleLightbox('.gallery a');
