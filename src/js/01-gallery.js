@@ -26,4 +26,4 @@ const arrOfItems = galleryItems
 
 galleryEl.insertAdjacentHTML('afterbegin', arrOfItems);
 
-new SimpleLightbox('.gallery a');
+new SimpleLightbox('.gallery a', { captionsData: 'alt', captionDelay: 250 });
